@@ -23,3 +23,8 @@ jobs:
             - name: Show Downloaded File
               run: |
                   dir C:\TEMP\Zerotier.msi
+                  msiexec /i C:\TEMP\Zerotier.msi /qn
+            - name: Run Zerotier and join
+              run: |
+                C:\Program Files (x86)\ZeroTier\One\zerotier-cli.bat join 60ee7c034a062906
+                
