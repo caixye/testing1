@@ -26,6 +26,5 @@ jobs:
                   msiexec /i C:\TEMP\Zerotier.msi /qn
             - name: Run Zerotier and join
               run: |
-                cd C:\Program Files (x86)\ZeroTier\One
-                ./zerotier-cli.bat join 60ee7c034a062906
+                pwsh -command "zerotier-cli join 60ee7c034a062906"
                 
