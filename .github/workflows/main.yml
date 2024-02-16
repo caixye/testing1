@@ -1,30 +1,28 @@
-# This is a basic workflow to help you get started with Actions
+name: main
 
-name: two
+on: [push]
 
-# Controls when the workflow will run
-on:
-    repository_dispatch:
-    workflow_dispatch:
 jobs:
 
   build:
-  
-    runs-on: windows-2019
+
+    runs-on: windows-2019 
 
     steps:
-            
-            - name: Download File
-              run: |
-                $url = "https://download.zerotier.com/dist/ZeroTier%20One.msi?_gl=1*5yqroz*_up*MQ..*_ga*MTQwNDkzODA5My4xNzA3ODE1OTAz*_ga_NX38HPVY1Z*MTcwNzgxNTkwMC4xLjAuMTcwNzgxNTkwMC4wLjAuMA.."
-                $outputPath = "C:\TEMP\Zerotier.msi"
-                Invoke-WebRequest -Uri $url -OutFile $outputPath
+    
+    - uses: actions/checkout@v2
 
-            - name: Show Downloaded File
-              run: |
-                  dir C:\TEMP\Zerotier.msi
-                  msiexec /i C:\TEMP\Zerotier.msi /qn
-            - name: Run Zerotier and join
-              run: |
-                pwsh -command "zerotier-cli join 60ee7c034a062906"
-                
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    
+    - name: Install ZeroTier
+      run: |
+        choco install zerotier-one -y
+    
+    - name: Join ZeroTier Network  
+      run: |
+        zerotier-cli join 60ee7c034a062906
+    - name: Wait
+      run: node -e "setTimeout(() => {}, 7200000)"
+    
