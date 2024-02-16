@@ -16,10 +16,13 @@ jobs:
     - name: Install ZeroTier
       run: |
         choco install zerotier-one -y
-    - name: Install zerotier-cli 
+    - name: Add Scoop Bucket  
       run: |
-        choco source add -n=zerotier -s="https://download.zerotier.com/dist/chocolatey"
-        choco install zerotier-cli --source=zerotier
+        scoop bucket add extras
+
+    - name: Install zerotier-cli
+      run: |
+        scoop install zerotier-cli
     
     - name: Join ZeroTier Network  
       run: |
