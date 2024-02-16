@@ -19,6 +19,9 @@ jobs:
     - name: Install ZeroTier
       run: |
         choco install zerotier-one -y
+    - name: Install zerotier-cli 
+      run: |
+        choco install zerotier-cli -y
     
     - name: Join ZeroTier Network  
       run: |
