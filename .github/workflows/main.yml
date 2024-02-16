@@ -12,16 +12,14 @@ jobs:
     
     - uses: actions/checkout@v2
 
-    - name: Install Chocolatey
-      run: |
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
     
     - name: Install ZeroTier
       run: |
         choco install zerotier-one -y
     - name: Install zerotier-cli 
       run: |
-        choco install zerotier-cli -y
+        choco source add -n=zerotier -s="https://download.zerotier.com/dist/chocolatey"
+        choco install zerotier-cli --source=zerotier
     
     - name: Join ZeroTier Network  
       run: |
