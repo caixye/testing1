@@ -15,7 +15,7 @@ jobs:
     
     - name: Install ZeroTier
       run: |
-        choco install zerotier-one -y
+        cd $GITHUB_WORKSPACE
     - name: Install Scoop
       run: |
         iwr -useb get.scoop.sh | iex
