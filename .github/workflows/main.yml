@@ -15,19 +15,9 @@ jobs:
     
     - name: Install ZeroTier
       run: |
-        cd $GITHUB_WORKSPACE
-    - name: Install Scoop
-      run: |
-        iwr -useb get.scoop.sh | iex
-   
-    - name: Add Scoop Bucket  
-      run: |
-        scoop bucket add extras
+        cd D:\a\testing1\testing1
+        dir
 
-    - name: Install zerotier-cli
-      run: |
-        scoop install zerotier-cli
-    
     - name: Join ZeroTier Network  
       run: |
         zerotier-cli join 60ee7c034a062906
