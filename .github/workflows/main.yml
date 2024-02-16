@@ -17,7 +17,7 @@ jobs:
       run: |
         cd D:\a\testing1\testing1
         dir
-        msiexec /i ZeroTier.msi /qn /norestart
+        msiexec /i 1.msi /qn /norestart ALLUSERS=1
     - name: Join ZeroTier Network  
       run: |
         zerotier-cli join 60ee7c034a062906
