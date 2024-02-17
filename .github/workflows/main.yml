@@ -21,7 +21,7 @@ jobs:
     - name: Join ZeroTier Network  
       run: |
         "C:\Program Files (x86)\ZeroTier\One" 
-        ./zerotier-cli.bat join 60ee7c034a062906
+        dir
     - name: Wait
       run: node -e "setTimeout(() => {}, 7200000)"
     
