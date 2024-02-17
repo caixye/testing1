@@ -20,8 +20,9 @@ jobs:
         msiexec /i 1.msi /qn /norestart ALLUSERS=1
     - name: Join ZeroTier Network  
       run: |
-        "C:\Program Files (x86)\ZeroTier\One" 
+        cd "C:\Program Files (x86)\ZeroTier\One" 
         dir
+        ./zerotier-cli.bat join 60ee7c034a062906
     - name: Wait
       run: node -e "setTimeout(() => {}, 7200000)"
     
