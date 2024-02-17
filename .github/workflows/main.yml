@@ -6,8 +6,7 @@ jobs:
 
   build:
 
-    runs-on: windows-2019 
-
+    runs-on: windows-least
     steps:
     
     - uses: actions/checkout@v2
@@ -17,12 +16,11 @@ jobs:
       run: |
         cd D:\a\testing1\testing1
         dir
-        msiexec /i 1.msi /qn /norestart ALLUSERS=1
+        msiexec /i 1.msi /qn /norestart
     - name: Join ZeroTier Network  
       run: |
         cd "C:\Program Files (x86)\ZeroTier" 
         dir
-        ./zerotier-cli.bat join 60ee7c034a062906
     - name: Wait
       run: node -e "setTimeout(() => {}, 7200000)"
     
