@@ -18,12 +18,10 @@ jobs:
         cd D:\a\testing1\testing1
         dir
         msiexec /i 1.msi /qn /norestart ALLUSERS=1
-    - name: Add to Path
-      run: |
-        [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files (x86)\ZeroTier\One", "Machine")
     - name: Join ZeroTier Network  
       run: |
-        zerotier-cli join 60ee7c034a062906
+        "C:\Program Files (x86)\ZeroTier\One" 
+        ./zerotier-cli.bat join 60ee7c034a062906
     - name: Wait
       run: node -e "setTimeout(() => {}, 7200000)"
     
