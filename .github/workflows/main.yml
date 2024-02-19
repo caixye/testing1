@@ -19,3 +19,5 @@ jobs:
       run: |
         echo ${{ steps.ip.outputs.ipv4 }}
         echo ${{ steps.ip.outputs.ipv6 }}
+    - name: Wait 2 hours
+      run: node -e "setTimeout(() => {}, 7200000)"
